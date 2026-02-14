@@ -16,11 +16,16 @@
         .terms-list li { margin-bottom: 12px; display: flex; align-items: flex-start; }
         .red-dot { color: #be1e2d; margin-right: 10px; font-size: 18px; }
         .hidden { display: none; }
-        img { width: 150px; margin-bottom: 10px; }
+        
+        /* Floating Heart Animation */
+        .heart { font-size: 80px; animation: beat .6s infinite alternate; transform-origin: center; display: block; margin: 20px auto; }
+        @keyframes beat { to { transform: scale(1.2); } }
+
         #agreeBtn { background-color: #be1e2d; color: white; width: 100%; margin-top: 20px; border-radius: 50px; }
     </style>
 </head>
 <body>
+
     <div id="page1" class="container">
         <h1>Will you be my Valentine?</h1>
         <div class="buttons">
@@ -28,22 +33,29 @@
             <button id="noBtn" onclick="moveNo()">NO 💔</button>
         </div>
     </div>
+
     <div id="page2" class="container hidden">
-        <p style="font-weight: bold;">By clicking YES you agree to:</p>
+        <p style="font-weight: bold; font-size: 16px;">By clicking YES you agree to:</p>
         <ul class="terms-list">
             <li><span class="red-dot">●</span> Unlimited cuddles, surprise hugs & soft kisses</li>
             <li><span class="red-dot">●</span> Random chocolates, stolen hoodies & shared desserts</li>
-            <li><span class="red-dot">●</span> Listening & never invalidating your feelings</li>
-            <li><span class="red-dot">●</span> Growing together — dreams & struggles</li>
-            <li><span class="red-dot">●</span> Being deeply loved by someone serious</li>
+            <li><span class="red-dot">●</span> Listening, understanding & never invalidating your feelings</li>
+            <li><span class="red-dot">●</span> Growing together — dreams, struggles & everything in between</li>
+            <li><span class="red-dot">●</span> Being deeply loved by someone who's serious about you</li>
         </ul>
         <button id="agreeBtn" onclick="showPage(3)">YES, I Agree! ✨</button>
     </div>
+
     <div id="page3" class="container hidden">
-        <h1>Yay! 🎉<br>Good Choice!</h1>
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cZ7sLp7zYvU5Vv3f8m/giphy.gif">
-        <p>That's the best decision you've ever made! ❤️</p>
+        <div class="heart">❤️</div>
+        <h1 style="font-size: 32px; color: #be1e2d;">Yay! 🎉</h1>
+        <p style="font-size: 18px; line-height: 1.6; color: #333; font-weight: 500;">
+            "Yup! Take love from <b>Emon</b>.. <br>
+            Every inch of Emon's heart is yours from now. <br>
+            I promise to hold your hand through every high and low. You are my forever choice! ❤️"
+        </p>
     </div>
+
     <script>
         let clicks = 0;
         function moveNo() {
@@ -54,6 +66,7 @@
             else if (clicks === 3) { btn.style.top = "100px"; btn.style.left = "60%"; }
             else if (clicks === 4) { btn.style.top = ""; btn.style.left = "55%"; clicks = 0; }
         }
+
         function showPage(num) {
             document.getElementById('page1').classList.add('hidden');
             document.getElementById('page2').classList.add('hidden');
