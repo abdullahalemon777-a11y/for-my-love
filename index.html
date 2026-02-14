@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f9f9f9; text-align: center; overflow: hidden; }
+        .container { background: white; padding: 40px 20px; border-radius: 15px; width: 85%; max-width: 400px; position: relative; }
+        h1 { font-size: 32px; color: #111; margin-bottom: 30px; font-weight: 600; }
+        .buttons { display: flex; justify-content: center; gap: 15px; height: 60px; position: relative; }
+        button { padding: 12px 30px; font-size: 18px; border: none; border-radius: 12px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        #yesBtn { background-color: #be1e2d; color: white; }
+        #noBtn { background-color: #e6e6e6; color: #333; position: absolute; transition: 0.1s; }
+        .terms-list { text-align: left; font-size: 15px; line-height: 1.6; list-style: none; padding: 0; margin-top: 20px; color: #333; }
+        .terms-list li { margin-bottom: 12px; display: flex; align-items: flex-start; }
+        .red-dot { color: #be1e2d; margin-right: 10px; font-size: 18px; }
+        .hidden { display: none; }
+        img { width: 150px; margin-bottom: 10px; }
+        .hint { margin-top: 25px; color: #666; font-size: 14px; }
+        #agreeBtn { background-color: #be1e2d; color: white; width: 100%; margin-top: 20px; border-radius: 50px; }
+    </style>
+</head>
+<body>
+
+    <div id="page1" class="container">
+        <h1>Will you be my Valentine?</h1>
+        <div class="buttons">
+            <button id="yesBtn" onclick="showPage(2)">YES ❤️</button>
+            <button id="noBtn" onmouseover="moveNo()" ontouchstart="moveNo()">NO 💔</button>
+        </div>
+        <p class="hint">Hint: The 'No' button is a bit shy... 🫣</p>
+    </div>
+
+    <div id="page2" class="container hidden">
+        <p style="font-weight: bold; font-size: 16px;">By clicking YES you agree to:</p>
+        <ul class="terms-list">
+            <li><span class="red-dot">●</span> Unlimited cuddles, surprise hugs & soft kisses</li>
+            <li><span class="red-dot">●</span> Random chocolates, stolen hoodies & shared desserts</li>
+            <li><span class="red-dot">●</span> Listening, understanding & never invalidating your feelings</li>
+            <li><span class="red-dot">●</span> Growing together — dreams, struggles & everything in between</li>
+            <li><span class="red-dot">●</span> Being deeply loved by someone who's serious about you</li>
+        </ul>
+        <p style="font-style: italic; margin-top: 15px;">Effective immediately!</p>
+        <button id="agreeBtn" onclick="showPage(3)">YES, I Agree! ✨</button>
+    </div>
+
+    <div id="page3" class="container hidden">
+        <h1 style="font-size: 36px; margin-bottom: 10px;">Yay! 🎉<br>Good Choice!</h1>
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cZ7sLp7zYvU5Vv3f8m/giphy.gif">
+        <p style="font-size: 18px; font-weight: 500;">That's the best decision you have ever made! ❤️</p>
+    </div>
+
+    <script>
+        function showPage(num) {
+            document.getElementById('page1').classList.add('hidden');
+            document.getElementById('page2').classList.add('hidden');
+            document.getElementById('page3').classList.add('hidden');
+            document.getElementById('page' + num).classList.remove('hidden');
+        }
+
+        function moveNo() {
+            const btn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+    </script>
+</body>
+</html>
